@@ -21,18 +21,22 @@ const PORT = process.env.PORT || 5001;
 // }));
 app.use(express.json({limit:"10mb"})); //allows you to parse the body of the request
 app.use(cookieParser());
-
-app.get("/backend",(req,res)=>{
-    res.send("Backend start");
+connectDB().catch(err => {
+    console.error("DB connection failed:", err);
+    process.exit(1);
 });
+
 app.use("/api/auth",authRoutes);
 app.use("/api/products",productRoutes);
 app.use("/api/cart",cartRoutes);
 app.use("/api/coupons",couponRoutes);
 app.use("/api/payments",paymentRoutes);
 app.use("/api/analytics",analyticsRoutes);
+app.get("/", (req, res) => {
+    res.send("API Running");
+});
 
 app.listen(PORT,()=>{
     console.log(`Server successfully started ${PORT}`);
-    connectDB();
-})
+});
+export default app; 
