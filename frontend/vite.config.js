@@ -10,11 +10,11 @@ export default defineConfig({
   ],
   server:{
     proxy:{
-      "/api": {
-        target: "https://ecommerce-stripe-ruddy.vercel.app",
-         changeOrigin: true,
-          secure: false
-      }
+      "/api":  {
+            target: "https://ecommerce-stripe-liart.vercel.app",
+            changeOrigin: true,
+            secure: false
+        }
     }
   }
 })
