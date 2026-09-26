@@ -12,6 +12,8 @@ export default defineConfig({
     proxy:{
       "/api": {
         target: "https://ecommerce-stripe-ruddy.vercel.app",
+         changeOrigin: true,
+          secure: false
       }
     }
   }
